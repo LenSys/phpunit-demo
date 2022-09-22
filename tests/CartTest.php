@@ -64,4 +64,17 @@ class CartTest extends TestCase
         $this->assertEquals(0, round($netPrice, 2));
         $this->assertEquals(0, $cart->getTax());
     }
+
+
+    public function testTypeErrorIsThrownWhenSettingNullPrice(): void
+    {
+        $this->expectException(TypeError::class);
+
+        $cart = new Cart(null);
+        $cart->setTax(12);
+        $netPrice = $cart->getNetPrice();
+
+        $this->assertEquals(0, round($netPrice, 2));
+        $this->assertEquals(0, $cart->getTax());
+    }
 }

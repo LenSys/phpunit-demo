@@ -29,6 +29,10 @@ class InventoryTest extends TestCase
 
         $inventory->loadProducts();
 
-        $this->assertCount(5, $inventory->getProducts());
+        $products = $inventory->getProducts();
+
+        $this->assertCount(5, $products);
+        $this->assertSame("TestProduct 1", $products[0]);
+        $this->assertSame("TestProduct 5", $products[4]);
     }
 }
